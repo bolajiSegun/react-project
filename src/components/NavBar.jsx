@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
-import Loader from "./Loader";
 import { useAuth } from "../ContextAPI/AuthUpdate";
 import heroImg from "../assets/hero-img.png";
 // import Home from "../pages/Home";
@@ -8,29 +7,28 @@ import heroImg from "../assets/hero-img.png";
 // import Work from "../pages/Work";
 
 function NavBar() {
-  const { token, user } = useAuth();
-  const [loading, setLoading] = useState(true);
+  const { user } = useAuth();
   const location = useLocation();
   const [showNav, setShowNav] = useState(false);
   const [isActive, setIsActive] = useState(location.pathname);
 
   useEffect(() => {
     setIsActive(location.pathname);
-    setLoading(false);
   }, [location.pathname]);
 
   const toggleNav = () => {
     setShowNav((prev) => !prev);
   };
 
-  if (loading) {
-    return <Loader />;
-  }
+  // if (loading) {
+  //   return <Loader />;
+  // }
 
   return (
     <>
       <div className="">
         <ul className="flex justify-end md:visible lg:visible items-center mt-10 text-black font-medium text-xl">
+          {/* desktop navbar */}
           <ul
             className={` lg:flex md:flex lg:justify-end md:justify-end relative -left-80 transition-all transition-1000 text-center shadow-sm shadow-black lg:shadow-none md:shadow-none w-[100%]  md:left-1 lg:left-1 lg:items-center text-black font-medium text-xl showNavBar ${
               showNav ? "left-10" : "-left-80"
@@ -74,9 +72,9 @@ function NavBar() {
                 </li>
                 <li className="mr-10">
                   <Link
-                    to="/LoginPage"
+                    to="/Sign-up"
                     className={`${
-                      isActive.includes("LoginPage") && "text-[#FF6464]"
+                      isActive.includes("Sign-up") && "text-[#FF6464]"
                     }`}
                   >
                     Register Here
@@ -86,9 +84,9 @@ function NavBar() {
             )}
             <li className="flex flex-row-reverse justify-center items-center">
               <Link
-                to="/LoginPage"
+                to="/Sign-up"
                 className={`${
-                  isActive.includes("LoginPage") && "text-[#FF6464]"
+                  isActive.includes("Sign-up") && "text-[#FF6464]"
                 }`}
               ></Link>
             </li>
@@ -106,8 +104,8 @@ function NavBar() {
                     </Link>
                   </li>
                 </div>
-                <li className="bg-[#FF6464] text-white h-8 rounded-lg px-4 py-1">
-                  {user ? user.username : "gfgfhfh"}
+                <li className="bg-[#FF6464] text-white text-md h-8 rounded-lg px-4 py-1">
+                  {user ? user.username : ""}
                 </li>
               </div>
             )}

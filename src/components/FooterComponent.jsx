@@ -1,4 +1,3 @@
-import React from "react";
 import fb from "../assets/fb.svg";
 import group from "../assets/Group.svg";
 import vector from "../assets/Vector.svg";

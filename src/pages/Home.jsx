@@ -13,7 +13,7 @@ function Home() {
           src={user ? user.displayPhoto : heroImg}
           alt="my-hero-img"
           title="This is the image of myself in the hero section"
-          className="mt-14 lg:mt-0 w-44 lg:w-60 m-auto rounded-full"
+          className="mt-14 lg:mt-0 w-44 lg:w-60 m-auto rounded-full aspect-square"
         />
         <div className="text-[#21243D] lg:mx-auto mb-20 lg:w-2/3">
           <h1 className="font-bold text-3xl lg:text-4xl mt-9 text-center">

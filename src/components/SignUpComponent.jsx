@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SGLOGO from "../assets/logo1.jpg";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../ContextAPI/AuthUpdate";
 import Loader from "./Loader";
 
@@ -150,12 +150,12 @@ function SignUpComponent() {
               </button>
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Already have an account?{" "}
-                <a
+                <Link
                   className="font-medium text-blue-600 hover:underline dark:text-blue-500"
-                  href="/signin"
+                  to="/Sign-in"
                 >
                   Sign in here
-                </a>
+                </Link>
               </p>
             </form>
           </div>

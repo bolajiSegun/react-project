@@ -1,7 +1,5 @@
 /* eslint-disable no-unused-vars */
-// import { useState } from "react";
 import "./App.css";
-// import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Blog from "./pages/Blog";
@@ -45,16 +43,8 @@ function App() {
     }
   }, [handleSetUser, token]);
 
-  if (loading) {
-    return (
-      <div className="">
-        <Loader />
-      </div>
-    );
-  }
-
   return (
-    <>
+    <main className="min-h-screen max-w-[100rem] mx-auto">
       <BrowserRouter>
         <NavBar />
         <Routes>
@@ -62,11 +52,11 @@ function App() {
           <Route path="/Blog" element={<Blog />} />
           <Route path="/Work" element={<Work />} />
           <Route path="/Sign-in" element={<SignInPage />} />
-          <Route path="/LoginPage" element={<LoginPage />} />
+          <Route path="/Sign-up" element={<LoginPage />} />
         </Routes>
         <FooterComponent />
       </BrowserRouter>
-    </>
+    </main>
   );
 }
 

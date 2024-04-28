@@ -1,12 +1,10 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../ContextAPI/AuthUpdate";
-import Loader from "./Loader";
 
 function SignInCompo() {
   const navigate = useNavigate();
   const { handleSetUser } = useAuth;
-  const [loading, setLoading] = useState(true);
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -19,7 +17,6 @@ function SignInCompo() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
     const formDataToSend = new FormData();
     formDataToSend.append("username", formData.username);
     formDataToSend.append("password", formData.password);
@@ -39,10 +36,6 @@ function SignInCompo() {
       });
   };
 
-  if (loading) {
-    return <Loader />;
-  }
-
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8 px-6">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -57,7 +50,7 @@ function SignInCompo() {
         <p className="mt-2 text-center text-sm leading-5 text-blue-500 max-w">
           Or
           <Link
-            to={"/LoginPage"}
+            to={"/Sign-up"}
             className="font-medium text-blue-500 hover:text-blue-500 focus:outline-none focus:underline transition ease-in-out duration-150"
           >
             create a new acccount
@@ -73,16 +66,16 @@ function SignInCompo() {
                 htmlFor="email"
                 className="block text-sm font-medium leading-5  text-gray-700"
               >
-                Email address
+                username
               </label>
               <div className="mt-1 relative rounded-md shadow-sm">
                 <input
-                  id="email"
-                  name="email"
-                  placeholder="user@example.com"
-                  type="email"
+                  id="username"
+                  name="username"
+                  placeholder="johndoe123"
+                  type="text"
                   required=""
-                  value=""
+                  value={formData.username}
                   onChange={handleChange}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                 />
@@ -115,6 +108,7 @@ function SignInCompo() {
                   name="password"
                   type="password"
                   required=""
+                  value={formData.password}
                   onChange={handleChange}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                 />
